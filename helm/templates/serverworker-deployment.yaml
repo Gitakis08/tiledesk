@@ -500,6 +500,51 @@ spec:
                 configMapKeyRef:
                   name: {{ include "tiledesk.fullname" . }}-config
                   key: GOOGLE_CALLBACK_URL
+            - name: OAUTH2_SIGNIN_ENABLED
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: OAUTH2_SIGNIN_ENABLED
+            - name: OAUTH2_CLIENT_ID
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: OAUTH2_CLIENT_ID
+            - name: OAUTH2_CLIENT_SECRET
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: OAUTH2_CLIENT_SECRET
+            - name: OAUTH2_AUTH_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: OAUTH2_AUTH_URL
+            - name: OAUTH2_TOKEN_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: OAUTH2_TOKEN_URL
+            - name: OAUTH2_USER_INFO_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: OAUTH2_USER_INFO_URL
+            - name: OAUTH2_CALLBACK_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: OAUTH2_CALLBACK_URL
+            - name: OAUTH2_SCOPE
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: OAUTH2_SCOPE
+            - name: ALLOWED_ENTRA_TENANTS
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: ALLOWED_ENTRA_TENANTS
             - name: CLOSE_BOT_UNRESPONSIVE_REQUESTS_ENABLE
               valueFrom:
                 configMapKeyRef:

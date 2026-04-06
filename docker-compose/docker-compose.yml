@@ -3,7 +3,10 @@ volumes:
   tiledesk-datadb:
 services:
   dashboard:
-    image: "tiledesk/tiledesk-dashboard:2.7.134-stage"
+    build:
+      context: ../../tiledesk-dashboard
+      dockerfile: Dockerfile
+    image: tiledesk-dashboard:local
     container_name: dashboard
     environment:
       - >-
@@ -152,7 +155,10 @@ services:
       - "KB_ENDPOINT_TRAIN=http://backend-llm-train:8000/api"
       - "KB_ENDPOINT_QA=http://backend-llm-qa:8000/api"
   server:
-    image: "tiledesk/tiledesk-server:2.13.23-op1"
+    build:
+      context: ../../tiledesk-server
+      dockerfile: Dockerfile
+    image: tiledesk-server:local
     container_name: server
     restart: always
     environment:
@@ -213,6 +219,19 @@ services:
       - COMMUNITY_VERSION=true
       - QUOTES_ENABLED=false
       - "TILEBOT_ENDPOINT=http://chatbot:3000"
+      # OAuth2 / Microsoft Entra (set OAUTH2_SIGNIN_ENABLED=true and fill tenant URLs in .env). Sessions required for /auth/oauth2 redirect state.
+      - DISABLE_SESSION_STRATEGY=false
+      - ENABLE_REDIS_SESSION=false
+      - SESSION_SECRET=${SESSION_SECRET:-tiledesk-local-session-secret}
+      - OAUTH2_SIGNIN_ENABLED=${OAUTH2_SIGNIN_ENABLED:-false}
+      - OAUTH2_SCOPE=openid profile email
+      - OAUTH2_CLIENT_ID
+      - OAUTH2_CLIENT_SECRET
+      - OAUTH2_AUTH_URL
+      - OAUTH2_TOKEN_URL
+      - OAUTH2_USER_INFO_URL
+      - "OAUTH2_CALLBACK_URL=${OAUTH2_CALLBACK_URL:-http://localhost:8081/api/auth/oauth2/callback}"
+      - ALLOWED_ENTRA_TENANTS
     depends_on:
       mongo:
         condition: service_healthy
