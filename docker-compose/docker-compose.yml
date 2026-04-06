@@ -38,6 +38,9 @@ services:
       - COMMUNITY_TEMPLATES_URL=/api/modules/templates/public/community
       - TEMPLATES_URL=/api/modules/templates/public/templates
       - FILE_UPLOAD_ACCEPT=*/*
+      - OAUTH2_SIGNIN_ENABLED
+      - OAUTH2_REDIRECT_URL
+      - DEFAULT_PROJECT_ID
     ports:
       - "4500:80" #use expose if you want to block external access
   cds:
