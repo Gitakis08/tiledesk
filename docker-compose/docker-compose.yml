@@ -12,7 +12,7 @@ services:
       - >-
         FEATURES_TOKEN=PAY:F-ANA:T-ACT:T-TRI:T-GRO:T-DEP:T-OPH:T-MTL:T-CAR:T-PSA:F-MTT:T-SUP:T-LBS:T-APP:T-DEV:F-NOT:T-IPS:F-ETK:F-RAS:F-PPB:F-PET:F-MTS:F-TIL:T-DGF:T-NAT:T-HPB:F-TOW:F-KNB:T-GPT:T-BAN:F-AST:F-MON:T-CNT:F-AUT:F-WUN:F-INT:T-DPA:T
       - BOT_CREDENTIAL_URL=/api/modules/dialogflow/botcredendials/
-      - "WIDGET_LOCATION=${EXTERNAL_BASE_URL:-http://localhost:8081}/widget/"
+      - WIDGET_LOCATION=/widget/
       - SERVER_BASE_URL=/api/
       - CHAT_BASE_URL=/chat/
       - CDS_BASE_URL=/cds/
@@ -49,7 +49,7 @@ services:
     environment:
       - >-
         FEATURES_TOKEN=PAY:F-ANA:T-ACT:T-TRI:T-GRO:T-DEP:T-OPH:T-MTL:T-CAR:T-PSA:F-MTT:T-SUP:T-LBS:T-APP:T-DEV:F-NOT:T-IPS:F-ETK:F-RAS:F-PPB:F-PET:F-MTS:F-TIL:T-DGF:T-NAT:T-HPB:F-TOW:F-KNB:T-GPT:T-BAN:F-AST:F-MON:T-CNT:F-AUT:F-WUN:F-INT:T-DPA:T
-      - "WIDGET_LOCATION=${EXTERNAL_BASE_URL:-http://localhost:8081}/widget/"
+      - WIDGET_LOCATION=/widget/
       - SERVER_BASE_URL=/api/
       - DASHBOARD_URL=/dashboard/
       - WS_URL
@@ -76,7 +76,7 @@ services:
     ports:
       - "4502:80" #use expose if you want to block external access
   webwidget:
-    image: "chat21/chat21-web-widget:5.1.2"
+    image: "chat21/chat21-web-widget:5.1.7"
     container_name: chat21-web-widget
     ports:
       - "4200:80" # specify port forewarding
@@ -86,7 +86,7 @@ services:
       - PUSH_ENGINE=none
       - LOG_LEVEL=info
       - "MQTT_ENDPOINT=${EXTERNAL_MQTT_BASE_URL:-ws://localhost:8081}/mqws/ws"
-      - "MQTT_APIENDPOINT=${EXTERNAL_BASE_URL:-http://localhost:8081}/chatapi/api"
+      - "MQTT_APIENDPOINT=/chatapi/api"
       #- MQTT_LOGINSERVICE_ENDPOINT=/api/chat21/native/auth/createCustomToken  
       - FIREBASE_APIKEY
       - FIREBASE_AUTHDOMAIN
@@ -187,7 +187,7 @@ services:
       - EMAIL_FROM_ADDRESS
       - "EMAIL_BASEURL=${EXTERNAL_BASE_URL:-http://localhost:8081}/dashboard"
       - "WEBHOOK_ORIGIN=${EXTERNAL_BASE_URL:-http://localhost:8081}/api/"
-      - "WIDGET_LOCATION=${EXTERNAL_BASE_URL:-http://localhost:8081}/widget/"
+      - WIDGET_LOCATION=/widget/
       - WS_SERVER_PATH
       #PLEASE DON'T PASTE THE LICENSE KEY HERE USE .ENV FILE. DOCKER ISSUE WITH /n char
       - LICENSE_KEY
