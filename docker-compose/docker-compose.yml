@@ -96,9 +96,9 @@ services:
       - FIREBASE_MESSAGINGSENDERID
       - FIREBASE_TENANT=tilechat
       - UPLOAD_ENGINE=native
-      - "SERVER_BASE_URL=${EXTERNAL_BASE_URL:-http://localhost:8081}/api/"
-      - "TRANSLATIONS_URL=${EXTERNAL_BASE_URL:-http://localhost:8081}/api/"
-      - "API_BASEIMAGE_URL=${EXTERNAL_BASE_URL:-http://localhost:8081}/api/"
+      - "SERVER_BASE_URL=/api/"
+      - "TRANSLATIONS_URL=/api/"
+      - "API_BASEIMAGE_URL=/api/"
       - DASHBOARD_URL=/dashboard/
       - AUTH_PERSISTENCE=LOCAL
       - ENBED_JS=true
