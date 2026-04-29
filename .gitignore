@@ -1,3 +1,6 @@
 copyfiles
 docker-compose/qdrant_storage
-agents/*
+agents/*docker-compose/.env
+docker-compose/.env.*
+docker-compose/*.working.*
+docker-compose/docker-compose.yml.bak.*
