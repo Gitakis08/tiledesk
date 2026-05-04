@@ -17,7 +17,7 @@ services:
     - CDS_BASE_URL=/cds/
     - WS_URL
     - WS_URL_RELATIVE=/ws/
-    - BRAND_SRC
+    - BRAND_SRC=
     - REMOTE_JS_SRC
     - CHAT21_ENGINE=mqtt
     - UPLOAD_ENGINE=native

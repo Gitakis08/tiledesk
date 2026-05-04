@@ -1,0 +1,5 @@
+/* Hide Help Center / Support item from left sidebar */
+#support {
+  display: none !important;
+  visibility: hidden !important;
+}
