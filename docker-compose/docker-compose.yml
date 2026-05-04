@@ -4,9 +4,9 @@ volumes:
 services:
   dashboard:
     build:
-      context: ../../tiledesk-dashboard
+      context: ./custom/dashboard-footer
       dockerfile: Dockerfile
-    image: tiledesk-dashboard:local
+    image: pobuca/tiledesk-dashboard:2.7.165-footer
     container_name: dashboard
     environment:
     - FEATURES_TOKEN=PAY:F-ANA:T-ACT:T-TRI:T-GRO:T-DEP:T-OPH:T-MTL:T-CAR:T-PSA:F-MTT:T-SUP:T-LBS:T-APP:T-DEV:F-NOT:T-IPS:F-ETK:F-RAS:F-PPB:F-PET:F-MTS:F-TIL:T-DGF:T-NAT:T-HPB:F-TOW:F-KNB:T-GPT:T-BAN:F-AST:F-MON:T-CNT:F-AUT:F-WUN:F-INT:T-DPA:T
@@ -194,6 +194,7 @@ services:
     - EMAIL_PASSWORD=${EMAIL_PASSWORD}
     - EMAIL_FROM_ADDRESS=${EMAIL_FROM_ADDRESS}
     - EMAIL_BASEURL=${EXTERNAL_BASE_URL:-http://localhost:8081}/dashboard
+    - DISABLE_SEND_OFFLINE_EMAIL=${DISABLE_SEND_OFFLINE_EMAIL:-false}
     - WEBHOOK_ORIGIN=${EXTERNAL_BASE_URL:-http://localhost:8081}/api/
     - WIDGET_LOCATION=/widget/
     - WS_SERVER_PATH
