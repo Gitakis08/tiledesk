@@ -11,7 +11,7 @@
       .filter(function (el) {
         var txt = (el.innerText || '').trim();
         var rect = el.getBoundingClientRect();
-        return MATCH.test(txt) && rect.height > 0 && rect.height < 180;
+        return MATCH.test(txt) && rect.height > 0 && rect.height < 160;
       })
       .sort(function (a, b) {
         return a.getBoundingClientRect().height - b.getBoundingClientRect().height;
