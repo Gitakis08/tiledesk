@@ -75,7 +75,7 @@ services:
     - 4502:80
     restart: unless-stopped
   webwidget:
-    image: dockerakis08/chat21-web-widget:pobuca-events-url-fix-v7
+    image: dockerakis08/chat21-web-widget:pobuca-events-url-fix-v8
     container_name: chat21-web-widget
     ports:
     - 4200:80
