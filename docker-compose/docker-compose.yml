@@ -75,7 +75,7 @@ services:
     - 4502:80
     restart: unless-stopped
   webwidget:
-    image: chat21/chat21-web-widget:5.1.7
+    image: dockerakis08/chat21-web-widget:pobuca-events-url-fix
     container_name: chat21-web-widget
     ports:
     - 4200:80
@@ -164,7 +164,7 @@ services:
     container_name: server
     restart: always
     environment:
-    - API_URL=${API_URL}
+    - API_URL=${API_URL:-http://server:3000}
     - OAUTH2_SIGNIN_ENABLED=${OAUTH2_SIGNIN_ENABLED:-false}
     - OAUTH2_AUTH_URL=${OAUTH2_AUTH_URL}
     - OAUTH2_TOKEN_URL=${OAUTH2_TOKEN_URL}
