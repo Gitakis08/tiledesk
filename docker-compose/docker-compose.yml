@@ -103,7 +103,7 @@ services:
     - FILE_UPLOAD_ACCEPT=*/*
     restart: unless-stopped
   ionic:
-    image: chat21/chat21-ionic:3.4.22
+    image: pobuca/chat21-ionic:pobuca-converse-title
     container_name: chat21-ionic
     ports:
     - 8082:80
