@@ -25,7 +25,7 @@ COPY --from=builder /app/platforms/browser/www/ /usr/share/nginx/html
 COPY --from=builder /app/src/chat-config-template.json /usr/share/nginx/html
 COPY --from=builder /app/src/firebase-messaging-sw-template.js /usr/share/nginx/html
 
-RUN sed -i "s#<title>.*</title>#<title>Zemark chat</title>#g" /usr/share/nginx/html/index.html
+RUN sed -i "s#<title>.*</title>#<title>Pobuca Converse</title>#g" /usr/share/nginx/html/index.html
 
 WORKDIR /usr/share/nginx/html
 

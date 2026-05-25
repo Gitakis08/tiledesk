@@ -48,7 +48,7 @@ services:
       context: ./custom/design-studio-title
       dockerfile: Dockerfile
     # Base image recovered from the VM-only committed snapshot.
-    # Local wrapper intentionally retitles the page to "Zemark chat".
+    # Local wrapper intentionally retitles the page to "Pobuca Converse".
     image: pobuca/design-studio:zemark-chat-title
     container_name: cds
     environment:
