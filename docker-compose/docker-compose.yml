@@ -111,8 +111,8 @@ services:
     restart: unless-stopped
   ionic:
     build:
-      context: ./custom/chat21-ionic-title
-      dockerfile: Dockerfile
+      context: ../../chat21-ionic
+      dockerfile: ../tiledesk/docker-compose/custom/chat21-ionic-title/Dockerfile
     image: pobuca/chat21-ionic:zemark-chat-title
     container_name: chat21-ionic
     ports:
