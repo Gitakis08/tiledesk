@@ -75,7 +75,9 @@ services:
     - 4502:80
     restart: unless-stopped
   webwidget:
-    image: dockerakis08/chat21-web-widget:pobuca-events-url-fix-v12
+    # Pinned to the digest observed on the Azure VM on 2026-05-25.
+    # Source candidate: Gitakis08/chat21-web-widget fix/responsive-widget-size @ 8c4c1884.
+    image: dockerakis08/chat21-web-widget:pobuca-events-url-fix-v12@sha256:4ebb702e559b7f6e6b18942ed383e71538aa50ea2bbcb1573197ab4ab5a75dff
     container_name: chat21-web-widget
     ports:
     - 4200:80
