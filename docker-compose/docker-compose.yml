@@ -44,7 +44,12 @@ services:
     - 4500:80
     restart: unless-stopped
   cds:
-    image: pobuca/design-studio:pobuca-converse-title
+    build:
+      context: ./custom/design-studio-title
+      dockerfile: Dockerfile
+    # Base image recovered from the VM-only committed snapshot.
+    # Local wrapper intentionally retitles the page to "Zemark chat".
+    image: pobuca/design-studio:zemark-chat-title
     container_name: cds
     environment:
     - FEATURES_TOKEN=PAY:F-ANA:T-ACT:T-TRI:T-GRO:T-DEP:T-OPH:T-MTL:T-CAR:T-PSA:F-MTT:T-SUP:T-LBS:T-APP:T-DEV:F-NOT:T-IPS:F-ETK:F-RAS:F-PPB:F-PET:F-MTS:F-TIL:T-DGF:T-NAT:T-HPB:F-TOW:F-KNB:T-GPT:T-BAN:F-AST:F-MON:T-CNT:F-AUT:F-WUN:F-INT:T-DPA:T
