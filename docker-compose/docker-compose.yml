@@ -44,7 +44,7 @@ services:
     - 4500:80
     restart: unless-stopped
   cds:
-    image: tiledesk/design-studio:1.39.9-rc3
+    image: pobuca/design-studio:pobuca-converse-title
     container_name: cds
     environment:
     - FEATURES_TOKEN=PAY:F-ANA:T-ACT:T-TRI:T-GRO:T-DEP:T-OPH:T-MTL:T-CAR:T-PSA:F-MTT:T-SUP:T-LBS:T-APP:T-DEV:F-NOT:T-IPS:F-ETK:F-RAS:F-PPB:F-PET:F-MTS:F-TIL:T-DGF:T-NAT:T-HPB:F-TOW:F-KNB:T-GPT:T-BAN:F-AST:F-MON:T-CNT:F-AUT:F-WUN:F-INT:T-DPA:T
@@ -75,7 +75,7 @@ services:
     - 4502:80
     restart: unless-stopped
   webwidget:
-    image: dockerakis08/chat21-web-widget:pobuca-events-url-fix-v10
+    image: dockerakis08/chat21-web-widget:pobuca-events-url-fix-v12
     container_name: chat21-web-widget
     ports:
     - 4200:80
@@ -103,7 +103,10 @@ services:
     - FILE_UPLOAD_ACCEPT=*/*
     restart: unless-stopped
   ionic:
-    image: dockerakis08/chat21-ionic:pobuca-converse-title
+    build:
+      context: ./custom/chat21-ionic-title
+      dockerfile: Dockerfile
+    image: pobuca/chat21-ionic:zemark-chat-title
     container_name: chat21-ionic
     ports:
     - 8082:80
@@ -152,7 +155,7 @@ services:
     - FLOW_LOGS_ENABLED=true
     - AMQP_MANAGER_URL=amqp://ignored:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI3NjMwYTAwZS0xNTUxLTQ3Y2ItYmEzMC02NGRlNjJmYmNmNGYiLCJzdWIiOiIwMS1PQlNFUlZFUiIsInNjb3BlIjpbInJhYmJpdG1xLnJlYWQ6Ki8qLyoiLCJyYWJiaXRtcS53cml0ZToqLyovKiIsInJhYmJpdG1xLmNvbmZpZ3VyZToqLyovKiJdLCJjbGllbnRfaWQiOiIwMS1PQlNFUlZFUiIsImNpZCI6IjAxLU9CU0VSVkVSIiwiYXpwIjoiMDEtT0JTRVJWRVIiLCJ1c2VyX2lkIjoiMDEtT0JTRVJWRVIiLCJhcHBfaWQiOiJ0aWxlY2hhdCIsImlhdCI6MTY5NjQ5MjI4NywiZXhwIjoyMDA3NTMyMjg3LCJhdWQiOlsicmFiYml0bXEiLCIwMS1PQlNFUlZFUiJdLCJraWQiOiJ0aWxlZGVzay1rZXkiLCJ0aWxlZGVza19hcGlfcm9sZXMiOiJ1c2VyIn0.Lq0MLTYny7tIYVQ-KEDLlL-h7gAqofCfC2IDgI_0TOE@rabbitmq:5672?heartbeat=60
     - AI_ENDPOINT=http://backend-llm-train:8000/api
-    - GPTKEY=CHANGEIT
+    - GPTKEY=${GPTKEY:-CHANGEIT}
     - KB_ENDPOINT_TRAIN=http://backend-llm-train:8000/api
     - KB_ENDPOINT_QA=http://backend-llm-qa:8000/api
     restart: unless-stopped
@@ -212,7 +215,7 @@ services:
     - FB_APP_ID
     - FB_APP_SECRET
     - BASE_FILE_URL=${EXTERNAL_BASE_URL:-http://localhost:8081}/api/
-    - GPTKEY=CHANGEIT
+    - GPTKEY=${GPTKEY:-CHANGEIT}
     - AI_MODELS=gpt-5:4;gpt-5-mini:0.8;gpt-5-nano:0.16;gpt-4.1:3;gpt-4.1-mini:0.6;gpt-4.1-nano:0.16;gpt-4o:4;gpt-4o-mini:0.3;gpt-4:25;gpt-4-turbo-preview:12;gpt-3.5-turbo:0.6
     - OPENAI_ENDPOINT=https://api.openai.com/v1
     - KB_ENDPOINT_TRAIN=http://backend-llm-train:8000/api
@@ -308,7 +311,7 @@ services:
     - MONGODB_URL=mongodb://mongo/tiledesk
     - AMQP_MANAGER_URL=amqp://ignored:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI3NjMwYTAwZS0xNTUxLTQ3Y2ItYmEzMC02NGRlNjJmYmNmNGYiLCJzdWIiOiIwMS1PQlNFUlZFUiIsInNjb3BlIjpbInJhYmJpdG1xLnJlYWQ6Ki8qLyoiLCJyYWJiaXRtcS53cml0ZToqLyovKiIsInJhYmJpdG1xLmNvbmZpZ3VyZToqLyovKiJdLCJjbGllbnRfaWQiOiIwMS1PQlNFUlZFUiIsImNpZCI6IjAxLU9CU0VSVkVSIiwiYXpwIjoiMDEtT0JTRVJWRVIiLCJ1c2VyX2lkIjoiMDEtT0JTRVJWRVIiLCJhcHBfaWQiOiJ0aWxlY2hhdCIsImlhdCI6MTY5NjQ5MjI4NywiZXhwIjoyMDA3NTMyMjg3LCJhdWQiOlsicmFiYml0bXEiLCIwMS1PQlNFUlZFUiJdLCJraWQiOiJ0aWxlZGVzay1rZXkiLCJ0aWxlZGVza19hcGlfcm9sZXMiOiJ1c2VyIn0.Lq0MLTYny7tIYVQ-KEDLlL-h7gAqofCfC2IDgI_0TOE@rabbitmq:5672?heartbeat=60
     - JOB_TOPIC_EXCHANGE_TRAIN=tiledesk-trainer
-    - GPTKEY=CHANGEIT
+    - GPTKEY=${GPTKEY:-CHANGEIT}
     - TRAIN_PREFETCH=4
     - JWT_SECRET_KEY=tokenKey
     - TRAINER_LOG=info
@@ -332,7 +335,7 @@ services:
     - MONGODB_URL=mongodb://mongo/tiledesk
     - AMQP_MANAGER_URL=amqp://ignored:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI3NjMwYTAwZS0xNTUxLTQ3Y2ItYmEzMC02NGRlNjJmYmNmNGYiLCJzdWIiOiIwMS1PQlNFUlZFUiIsInNjb3BlIjpbInJhYmJpdG1xLnJlYWQ6Ki8qLyoiLCJyYWJiaXRtcS53cml0ZToqLyovKiIsInJhYmJpdG1xLmNvbmZpZ3VyZToqLyovKiJdLCJjbGllbnRfaWQiOiIwMS1PQlNFUlZFUiIsImNpZCI6IjAxLU9CU0VSVkVSIiwiYXpwIjoiMDEtT0JTRVJWRVIiLCJ1c2VyX2lkIjoiMDEtT0JTRVJWRVIiLCJhcHBfaWQiOiJ0aWxlY2hhdCIsImlhdCI6MTY5NjQ5MjI4NywiZXhwIjoyMDA3NTMyMjg3LCJhdWQiOlsicmFiYml0bXEiLCIwMS1PQlNFUlZFUiJdLCJraWQiOiJ0aWxlZGVzay1rZXkiLCJ0aWxlZGVza19hcGlfcm9sZXMiOiJ1c2VyIn0.Lq0MLTYny7tIYVQ-KEDLlL-h7gAqofCfC2IDgI_0TOE@rabbitmq:5672?heartbeat=60
     - JOB_TOPIC_EXCHANGE_TRAIN=tiledesk-trainer
-    - GPTKEY=CHANGEIT
+    - GPTKEY=${GPTKEY:-CHANGEIT}
     - TRAIN_PREFETCH=4
     - JWT_SECRET_KEY=tokenKey
     - TRAINER_LOG=info
