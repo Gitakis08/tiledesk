@@ -14,6 +14,7 @@ RUN set -eux; \
 # Pobuca/Zemark dashboard image assets
 COPY favicon.ico /usr/share/nginx/html/assets/img/logos/favicon.ico
 COPY tiledesk-logo.svg /usr/share/nginx/html/assets/img/logos/tiledesk-logo.svg
+COPY tiledesk-logo_new_gray.svg /usr/share/nginx/html/assets/img/logos/tiledesk-logo_new_gray.svg
 COPY tiledesk_logo_no_text.svg /usr/share/nginx/html/assets/img/logos/tiledesk_logo_no_text.svg
 COPY tiledesk-solo-logo.png /usr/share/nginx/html/assets/img/logos/tiledesk-solo-logo.png
 COPY tilebot_logo_small.png /usr/share/nginx/html/assets/img/tilebot_logo_small.png
