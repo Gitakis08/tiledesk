@@ -47,8 +47,8 @@ services:
     build:
       context: ./custom/design-studio-title
       dockerfile: Dockerfile
-    # Base image recovered from the VM-only committed snapshot.
-    # Local wrapper intentionally retitles the page to "Pobuca Converse".
+    # Wrapper layered on top of a local build from ../../design-studio.
+    # The wrapper keeps runtime branding tweaks separate from source-level styling.
     image: pobuca/design-studio:zemark-chat-title
     container_name: cds
     environment:
