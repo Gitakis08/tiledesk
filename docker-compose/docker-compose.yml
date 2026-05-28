@@ -80,9 +80,9 @@ services:
     - 4502:80
     restart: unless-stopped
   webwidget:
-    # Rebuilt from Gitakis08/chat21-web-widget codex/update-chat21-web-widget-upstream-20260525 @ 931e3f76.
+    # Rebuilt from Gitakis08/chat21-web-widget codex/update-chat21-web-widget-upstream-20260525 @ 5fd71222.
     # Pinned to the pushed Docker Hub digest on 2026-05-28.
-    image: dockerakis08/chat21-web-widget:20260528-931e3f76@sha256:e81719f17177e7f899c69d07f8fd1d7d5b499a62643dce1aabc9132157fb9b41
+    image: dockerakis08/chat21-web-widget:20260528-5fd71222@sha256:d312a0d4cdcd67b885f5bf96374552e3449ad8c7e32274a22237f7b67b941fb5
     container_name: chat21-web-widget
     ports:
     - 4200:80
