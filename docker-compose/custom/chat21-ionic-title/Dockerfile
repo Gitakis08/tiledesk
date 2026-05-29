@@ -12,7 +12,7 @@ RUN mkdir -p ./www
 
 RUN cordova platform add browser@latest
 
-RUN ionic cordova build browser
+RUN ionic cordova build browser --configuration production
 RUN sed -i 's#<script src="cordova.js"></script>##g; s#<script src="cordova.js" defer></script>##g' /app/platforms/browser/www/index.html
 
 FROM nginx:1.14.1-alpine AS setup
